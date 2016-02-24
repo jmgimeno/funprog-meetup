@@ -1,160 +1,149 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>A (personal) introduction to Funcional Programming</title>
+    <title>A (personal) introduction to Functional Programming</title>
 
-		<meta name="description" content="A (personal) introduction to Funcional Programming">
-		<meta name="author" content="Juan Manuel Gimeno Illa">
+    <meta name="description" content="A (personal) introduction to Functional Programming">
+    <meta name="author" content="Juan Manuel Gimeno Illa">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h2>A (personal) introduction to Funcional Programming</h2>
-					<p>
-						<small>Juan Manuel Gimeno Illa</small>
-					</p>
-				</section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h2>A (personal) introduction to Functional Programming</h2>
+          <p>
+            <small>Juan Manuel Gimeno Illa</small>
+          </p>
+        </section>
 
-				<section>
-					<h2>What is Functional Programming?</h2>
-					<blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
-						Functional programming (FP) is based on a simple premise with farreaching implications:
-						we construct our programs using only pure functions — in other words, functions that
-						have no side effects.
-					</blockquote>
-				</section>
+        <section>
+          <h2>What is Functional Programming?</h2>
+          <blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
+            Functional programming (FP) is based on a simple premise with far reaching implications:
+            we construct our programs using only pure functions — in other words, functions that
+            have no side effects.
+          </blockquote>
+        </section>
 
-				<section>
-					<h2>What are Side Effects?</h2>
+        <section>
+          <h2>What are Side Effects?</h2>
 
-					<blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
-						A function has a side effect if it does something other than simply return a result
-					</blockquote>
+          <blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
+            A function has a side effect if it does something other than simply return a result
+          </blockquote>
 
-					<ul>
-						<li>Modifying a variable</li>
-						<li>Modifying a data structure in place</li>
-						<li>Setting a field on an object</li>
-						<li>Throwing an exception or halting with an error</li>
-						<li>Printing to the console or reading user input</li>
-						<li>Reading from or writing to a file</li>
-						<li>Drawing on the screen</li>
-					</ul>
-				</section>
+          <ul>
+            <li>Modifying a variable</li>
+            <li>Modifying a data structure in place</li>
+            <li>Setting a field on an object</li>
+            <li>Throwing an exception or halting with an error</li>
+            <li>Printing to the console or reading user input</li>
+            <li>Reading from or writing to a file</li>
+            <li>Drawing on the screen</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Imperative vs. Functional</h2>
+        <section>
+          <h2>Imperative vs. Functional</h2>
 
-					<p>
-						Imperative
-					</p>
+          <p>
+            Imperative
+          </p>
 
-					<ul>
-						<li>Turing Machine</li>
-						<li>Statement oriented</li>
-						<li>Programming with places</li>
-						<li>Simulation in time</li>
-					</ul>
+          <ul>
+            <li>Turing Machine</li>
+            <li>Statement oriented</li>
+            <li>Programming with places</li>
+            <li>Simulation in time</li>
+          </ul>
 
-					<p>
-						Functional
-					</p>
+          <p>
+            Functional
+          </p>
 
-					<ul>
-						<li>Lambda-calculus</li>
-						<li>Expression oriented</li>
-						<li>Programming with values</li>
-						<li>Dataflow in space</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Benefits</h2>
-
-					<ul>
-						<li>Easier to reason about</li>
-						<li>Substitution model (a.k.a referential transparency)</li>
-						<li>Greater modularity & composability</li>
-						<li>Easier to paralleilize</li>
-					</ul>
-				</section>
+          <ul>
+            <li>Lambda-calculus</li>
+            <li>Expression oriented</li>
+            <li>Programming with values</li>
+            <li>Dataflow in space</li>
+          </ul>
+        </section>
 
 <section>
-				<section>
-					<h2>Referential transparency</h2>
+        <section>
+          <h2>Referential transparency</h2>
 
-					<blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
-						An expression e is referentially transparent if, for all programs p, all occurrences
-						of e in p can be replaced by the result of evaluating e without affecting the meaning
-						of p.
-					</blockquote>
+          <blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
+            An expression e is referentially transparent if, for all programs p, all occurrences
+            of e in p can be replaced by the result of evaluating e without affecting the meaning
+            of p.
+          </blockquote>
 
-					<blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
-						A function f is pure if the expression f(x) is referentially transparent for all
-						referentially transparent x.
-					</blockquote>
-				</section>
+          <blockquote cite="https://www.manning.com/books/functional-programming-in-scala">
+            A function f is pure if the expression f(x) is referentially transparent for all
+            referentially transparent x.
+          </blockquote>
+        </section>
 
-				<section>
-					<h2>Referentially Transparent</h2>
-					<pre><code class="hljs" data-trim contenteditable>
+        <section>
+          <h2>Referentially Transparent</h2>
+          <pre><code class="hljs" data-trim contenteditable>
 scala> val x = "Hello, World"
 x: java.lang.String = Hello, World
 scala> val r1 = x.reverse
 r1: String = dlroW ,olleH
 scala> val r2 = x.reverse
 r2: String = dlroW ,olleH
-					</code></pre>
-					<p>
-						Suppose we replace all occurrences of the term x with the expression referenced by x
-						(its definition), as follows:
-					</p>
-					<pre><code class="hljs" data-trim contenteditable>
-scala> val r2 = x.reverse
-r2: String = dlroW ,olleH
-    (its definition), as follows:
+          </code></pre>
+          <p class="fragment">
+            Suppose we replace all occurrences of the term x with the expression referenced by x
+            (its definition)
+          </p>
+          <pre class="fragment"><code class="hljs" data-trim contenteditable>
 scala> val r1 = "Hello, World".reverse
 r1: String = dlroW ,olleH
 scala> val r2 = "Hello, World".reverse
 r2: String = dlroW ,olleH
-					</code></pre>
-				</section>
+          </code></pre>
+          <p class="fragment">
+            So the x is referentially transparent (and r1 and r2 are too)
+          </p>
+        </section>
 
-				<section>
-					<h2>Not Referentially Transparent</h2>
-					<pre><code class="hljs" data-trim contenteditable>
+        <section>
+          <h2>Not Referentially Transparent</h2>
+          <pre><code class="hljs" data-trim contenteditable>
 scala> val x = new StringBuilder("Hello")
 x: java.lang.StringBuilder = Hello
 scala> val y = x.append(", World")
@@ -163,180 +152,200 @@ scala> val r1 = y.toString
 r1: java.lang.String = Hello, World
 scala> val r2 = y.toString
 r2: java.lang.String = Hello, World
-					</code></pre>
-					<p>
-						But now:
-					</p>
-					<pre><code class="hljs" data-trim contenteditable>
+          </code></pre>
+          <p class="fragment">
+            But now, if we replace all occurrences of the term y by its definition
+          </p>
+          <pre class="fragment"><code class="hljs" data-trim contenteditable>
 scala> val x = new StringBuilder("Hello")
 x: java.lang.StringBuilder = Hello
 scala> val r1 = x.append(", World").toString
 r1: java.lang.String = Hello, World
 scala> val r2 = x.append(", World").toString
 r2: java.lang.String = Hello, World, World
-					</code></pre>
-				</section>
+          </code></pre>
+          <p class="fragment">
+            So this shows that y is not referentially transparent (in this case
+            the problem is that expression y causes a mutation in x)
+          </p>
+        </section>
+
+        <section>
+          <h2>Benefits</h2>
+
+          <ul>
+            <li>Easier to reason about (substitution model works)</li>
+            <li>The effects of a function are expressed in its signature</li>
+            <li>Expressions are "context-free"</li>
+            <li>Greater modularity & composability</li>
+            <ul>
+              <li>No matter when I evaluate I get the same result (parallelizability)</li>
+              <li>No matter where I evaluate I get the same result (modularity)</li>
+            </ul>
+          </ul>
+        </section>
 </section>
 
-				<section>
-					<h2>Easier to reason about</h2>
-					<ul>
-						<li>The effects of a function are expressed in its signature</li>
-						<li>Substitution model works</li>
-						<li>Expressions are "context-free"</li>
-						<ul>
-							<li>No matter when I evaluate I get the same result (parallelizability)</li>
-							<li>No matter where I evaluate I get the same result (modularity)</li>
-						</ul>
-					</ul>
-				</section>
+        <section>
+          <h2>Functional Programming Languages</h2>
+          <p>
+            We can do functional programming in any language, but there are languages which
+            promote (or even force) a functional programming style:
+          </p>
 
-				<section>
-					<h2>Functional Programming Languages</h2>
-					<p>
-						Languages which promote (or oblige) functional programming:
-					</p>
-
-					<ul>
-						<li>Clojure / ClojureScript</li>
-						<li>Scala</li>
-						<li>Haskell</li>
-						<li>Idris</li>
-					</ul>
-				</section>
+          <ul>
+            <li>Clojure / ClojureScript</li>
+            <li>Scala</li>
+            <li>Haskell</li>
+            <li>Idris</li>
+          </ul>
+        </section>
 
 <section>
-				<section>
-					<h2>Clojure / ClojureScript</h2>
-					<ul>
-						<li>Lisp !!!</li>
-						<li>JVM & JS Engines</li>
-						<li>Immutable data structures</li>
-						<li>Concurrency semantics for references</li>
-						<li>Interoperable with java</li>
-						<li>Syntactic abstractions (macros)</li>
-						<li>JVM & JS Engines</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Clojure / ClojureScript</h2>
+          <ul>
+            <li>Lisp !!!</li>
+            <li>JVM & JS Engines</li>
+            <li>Immutable data structures</li>
+            <li>Concurrency semantics for references</li>
+            <li>Interoperable with java</li>
+            <li>core.async (channels and goroutines)</li>
+            <li>Datomic: the database as a value</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Clojure</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-(def ones (lazy-seq (cons 1 ones)))
+        <section>
+          <h2>Clojure</h2>
+          <pre class="stretch"><code class="hljs" data-trim contenteditable>
+(def start 458)
 
-(def nats (lazy-seq (cons 1 (map inc nats))))
+(def end 14)
 
-(def fibs (lazy-seq (list* 0 1 (map + fibs (drop 1 fibs)))))
+(defn init-state [n] {n [[]]})
 
-(def facts (lazy-seq (cons 1 (map * facts (iterate inc 1)))))
+(defn step [[n ps]]
+  [{(* 2 n)     (map #(conj % :double) ps)}
+   {(quot n 10) (map #(conj % :drop) ps)}])
 
-(defn sieve [seq]
-  (lazy-seq
-   (let [prime (first seq)]
-     (cons
-      prime
-      (sieve (remove #(zero? (mod % prime)) (rest seq)))))))
+(defn next-state [state]
+  (apply merge-with concat (mapcat step state)))
 
-(def primes (sieve (drop 1 nats)))
-					</code></pre>
-				</section>
+(defn final-state? [state]
+  (get state end))
+
+(def final-state
+  (->> start
+       init-state
+       (iterate next-state)
+       (drop-while (complement final-state?))
+       first))
+          </code></pre>
+        </section>
 </section>
 
 <section>
-				<section>
-					<h2>Scala</h2>
-					<ul>
-						<li>Object Functional (a better Java)</li>
-						<li>A subset of Scala "pure"</li>
-						<li>Higher-kinded types</li>
-						<li>Scalaz & Cats</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Scala</h2>
+          <ul>
+            <li>Object Functional (a better Java)</li>
+            <li>Powerful type system</li>
+            <li>Advanced libraries: Scalaz & Cats</li>
+            <li>Reactive Manifesto (2.0)
+              <ul>
+                <li>Responsive</li>
+                <li>Resilient</li>
+                <li>Elastic</li>
+                <li>Message-driven</li>
+              </ul>
+            </li>
 
-				<section>
-					<h2>Scala</h2>
-					<pre><code class="hljs" data-trim contenteditable>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Scala</h2>
+          <pre class="stretch"><code class="hljs" data-trim contenteditable>
 trait Monoid[A] {
   def op(a1: A, a2: A): A
   def zero: A
 }
 
 def listMonoid[A] = new Monoid[List[A]] {
-	def op(a1: List[A], a2: List[A]) = a1 ++ a2
-	val zero = Nil
+  def op(a1: List[A], a2: List[A]) = a1 ++ a2
+  val zero = Nil
 }
 
 def monoidLaws[A](m: Monoid[A], gen: Gen[A]): Prop =
-	forAll(gen)(a => m.op(a, m.zero) == a) &&
-	forAll(gen)(a => m.op(m.zero, a) == a) &&
-	forAll(gen ** gen ** gen){ case ((a, b), c)
-		=> m.op(m.op(a, b), c) == m.op(a, m.op(b, c)) }
+  forAll(gen)(a => m.op(a, m.zero) == a) &&
+  forAll(gen)(a => m.op(m.zero, a) == a) &&
+  forAll(gen ** gen ** gen){ case ((a, b), c)
+    => m.op(m.op(a, b), c) == m.op(a, m.op(b, c)) }
 
 def foldMap[A, B](as: List[A], m: Monoid[B])(f: A => B): B =
   as.foldLeft(m.zero)((b, a) => m.op(b, f(a)))
-					</code></pre>
-				</section>
+          </code></pre>
+        </section>
 </section>
 
 <section>
-				<section>
-					<h2>Haskell</h2>
-					<ul>
-						<li>Pure functional language</li>
-						<li>Curried Functions</li>
-						<li>Completely lazy (call by need)</li>
-						<li>Pattern matching</li>
-						<li>Functors, applicatives, monads, ...</li>
-						<li>The IO Monad</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Haskell</h2>
+          <ul>
+            <li>Pure functional language</li>
+            <li>Curried Functions</li>
+            <li>Completely lazy (call by need)</li>
+            <li>Pattern matching</li>
+            <li>Functors, applicatives, monads, ...</li>
+            <li>The IO Monad</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Haskell</h2>
-					<pre><code class="hljs" data-trim contenteditable>
+        <section>
+          <h2>Haskell</h2>
+          <pre class="stretch"><code class="hljs" data-trim contenteditable>
 class Monad m where
-   return :: a -> m a
-   (>>=)  :: m a -> (a -> m b) -> m b
+  return :: a -> m a
+  (>>=)  :: m a -> (a -> m b) -> m b
 
 instance Monad Maybe where
-	-- return      :: a -> Maybe a
-	return x       =  Just x
-	-- (>>=)       :: Maybe a -> (a -> Maybe b) -> Maybe b
-	Nothing  >>= _ =  Nothing
-	(Just x) >>= f =  f x
+  -- return      :: a -> Maybe a
+  return x       =  Just x
+  -- (>>=)       :: Maybe a -> (a -> Maybe b) -> Maybe b
+  Nothing  >>= _ =  Nothing
+  (Just x) >>= f =  f x
 
 instance Monad [] where
-	 -- return :: a -> [a]
-	 return x  =  [x]
-
-	 -- (>>=)  :: [a] -> (a -> [b]) -> [b]
-	 xs >>= f  =  concat (map f xs)
+  -- return :: a -> [a]
+  return x  =  [x]
+  -- (>>=)  :: [a] -> (a -> [b]) -> [b]
+  xs >>= f  =  concat (map f xs)
 
 sequence          :: Monad m => [m a] -> m [a]
 sequence []       =  return []
 sequence (mx:mxs) =  do x  <- mx
                         xs <- sequence mxs
                         return (x:xs)
-					</code></pre>
-				</section>
+          </code></pre>
+        </section>
 </section>
 
 <section>
-				<section>
-					<h2>Idris</h2>
-					<ul>
-						<li>Similar to Haskell but strictly evaluated</li>
-						<li>Dependent types</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Idris</h2>
+          <ul>
+            <li>Similar to Haskell but strictly evaluated</li>
+            <li>Dependent types</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Idris</h2>
-					<pre><code class="hljs" data-trim contenteditable>
+        <section>
+          <h2>Idris</h2>
+          <pre class="stretch"><code class="hljs" data-trim contenteditable>
 import Data.Vect
 
 insert : Ord elem =>
-	(x : elem) -> (xs_sorted : Vect k elem) -> Vect (S k) elem
+  (x : elem) -> (xs_sorted : Vect k elem) -> Vect (S k) elem
 insert x [] = [x]
 insert x (y :: xs) = case x < y of
                           False => y :: insert x xs
@@ -346,50 +355,96 @@ ins_sort : Ord elem => Vect n elem -> Vect n elem
 ins_sort [] = []
 ins_sort (x :: xs) = let xs_sorted = ins_sort xs in
                          insert x xs_sorted
-					</code></pre>
-				</section>
+          </code></pre>
+        </section>
 </section>
 
-				<section>
-					<h2>Suggestions for further study</h2>
-					<ul>
-						<li>Functional programming principles</li>
-						<li>A programming language</li>
-						<li>A little about type theory</li>
-						<li>Some Category Theory concepts</li>
-					</ul>
-				</section>
-			</div>
+        <section>
+          <h2>Suggestions for further study</h2>
+          <ul>
+            <li>A functional programming language</li>
+            <li>Functional programming principles</li>
+            <li>Some Category Theory concepts</li>
+            <li>A little bit about type theory</li>
+						<li>????</li>
+          </ul>
+        </section>
 
-		</div>
+        <section>
+          <img src="images/sicp.jpg" alt="Structure and Interpretation of Computer Programs" />
+          <p>
+            <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">Structure and Interpretation of Computer Programs</a>
+          </p>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section>
+          <img  width="400" height="580" src="images/fpinscala.jpg" alt="Functional Programming in Scala" />
+          <p>
+            <a href="https://www.manning.com/books/functional-programming-in-scala">Functional Programming in Scala</a>
+          </p>
+        </section>
 
-		<script>
+        <section>
+          <img  width="400" height="580" src="images/lyah.png" alt="Learn You a Haskell for Great Good!" />
+          <p>
+            <a href="http://learnyouahaskell.com/chapters">Learn You a Haskell for Great Good!</a>
+          </p>
+        </section>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <section>
+          <img  width="400" height="580" src="images/cftbat.jpg" alt="Clojure for the Brave and True" />
+          <p>
+            <a href="http://www.braveclojure.com">Clojure for the Brave and True</a>
+          </p>
+        </section>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        <section>
+          <img  width="400" height="580" src="images/idris.jpg" alt="Type-Driven Development with Idris" />
+          <p>
+            <a href="https://www.manning.com/books/type-driven-development-with-idris">Type-Driven Development with Idris</a>
+          </p>
+        </section>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        <section>
+          <img  width="400" height="580" src="images/frdm.jpg" alt="Functional and Reactive Domain Modeling" />
+          <p>
+            <a href="https://www.manning.com/books/functional-and-reactive-domain-modeling">Functional and Reactive Domain Modeling</a>
+          </p>
+        </section>
 
-		</script>
+      </div>
 
-	</body>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        slideNumber: "c/t",
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
 </html>
