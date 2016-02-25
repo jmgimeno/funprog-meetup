@@ -150,7 +150,7 @@ scala> val r2 = x.reverse.toString
 r2: String = List(3, 2, 1)
           </code></pre>
           <p class="fragment">
-            So the y can be referentially transparent (the code above is not a counterexample)
+            So the y can be referentially transparent (and reverse can be pure)
           </p>
         </section>
 
@@ -178,8 +178,7 @@ scala> val r2 = x.append(", World").toString
 r2: String = Hello, World, World
           </code></pre>
           <p class="fragment">
-            So this shows that y is not referentially transparent (in this case
-            the problem is that expression y causes a mutation in x)
+            So this shows that y is not referentially transparent (and append isn't pure)
           </p>
         </section>
 
