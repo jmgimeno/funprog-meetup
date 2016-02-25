@@ -128,25 +128,29 @@
         <section>
           <h2>Referentially Transparent</h2>
           <pre><code class="hljs" class="scala" data-trim>
-scala> val x = "Hello, World"
-x: java.lang.String = Hello, World
-scala> val r1 = x.reverse
-r1: String = dlroW ,olleH
-scala> val r2 = x.reverse
-r2: String = dlroW ,olleH
+scala> val x = List(1, 2, 3)
+x: List[Int] = List(1, 2, 3)
+scala> val y = x.reverse
+y: List[Int] = List(3, 2, 1)
+scala> val r1 = y.toString
+r1: String = List(3, 2, 1)
+scala> val r2 = y.toString
+r2: String = List(3, 2, 1)
           </code></pre>
           <p class="fragment">
-            Suppose we replace all occurrences of the term x with the expression referenced by x
+            Suppose we replace all occurrences of the term y with the expression referenced by y
             (its definition)
           </p>
           <pre class="fragment"><code class="hljs" class="scala" data-trim>
-scala> val r1 = "Hello, World".reverse
-r1: String = dlroW ,olleH
-scala> val r2 = "Hello, World".reverse
-r2: String = dlroW ,olleH
+scala> val x = List(1, 2, 3)
+x: List[Int] = List(1, 2, 3)
+scala> val r1 = x.reverse.toString
+r1: String = List(3, 2, 1)
+scala> val r2 = x.reverse.toString
+r2: String = List(3, 2, 1)
           </code></pre>
           <p class="fragment">
-            So the x is referentially transparent (and r1 and r2 are too)
+            So the y can be referentially transparent (the code above is not a counterexample)
           </p>
         </section>
 
@@ -154,24 +158,24 @@ r2: String = dlroW ,olleH
           <h2>Not Referentially Transparent</h2>
           <pre><code class="hljs" class="scala" data-trim>
 scala> val x = new StringBuilder("Hello")
-x: java.lang.StringBuilder = Hello
+x: StringBuilder = Hello
 scala> val y = x.append(", World")
-y: java.lang.StringBuilder = Hello, World
+y: StringBuilder = Hello, World
 scala> val r1 = y.toString
-r1: java.lang.String = Hello, World
+r1: String = Hello, World
 scala> val r2 = y.toString
-r2: java.lang.String = Hello, World
+r2: String = Hello, World
           </code></pre>
           <p class="fragment">
             But now, if we replace all occurrences of the term y by its definition
           </p>
           <pre class="fragment"><code class="hljs" class="scala" data-trim>
 scala> val x = new StringBuilder("Hello")
-x: java.lang.StringBuilder = Hello
+x: StringBuilder = Hello
 scala> val r1 = x.append(", World").toString
-r1: java.lang.String = Hello, World
+r1: String = Hello, World
 scala> val r2 = x.append(", World").toString
-r2: java.lang.String = Hello, World, World
+r2: String = Hello, World, World
           </code></pre>
           <p class="fragment">
             So this shows that y is not referentially transparent (in this case
