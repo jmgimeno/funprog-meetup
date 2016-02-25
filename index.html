@@ -15,10 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/solarized-light.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -77,27 +77,31 @@
         <section>
           <h2>Imperative vs. Functional</h2>
 
-          <p>
-            Imperative
-          </p>
+          <div class="fragment">
+            <p>
+              Imperative
+            </p>
 
-          <ul>
-            <li>Turing Machine</li>
-            <li>Statement oriented</li>
-            <li>Programming with places</li>
-            <li>Simulation in time</li>
-          </ul>
+            <ul>
+              <li>Turing Machine</li>
+              <li>Statement oriented</li>
+              <li>Programming with places</li>
+              <li>Simulation in time</li>
+            </ul>
+          </div>
 
-          <p>
-            Functional
-          </p>
+          <div class="fragment">
+            <p>
+              Functional
+            </p>
 
-          <ul>
-            <li>Lambda-calculus</li>
-            <li>Expression oriented</li>
-            <li>Programming with values</li>
-            <li>Dataflow in space</li>
-          </ul>
+            <ul>
+              <li>Lambda-calculus</li>
+              <li>Expression oriented</li>
+              <li>Programming with values</li>
+              <li>Dataflow in space</li>
+            </ul>
+          </div>
         </section>
 
 <section>
@@ -118,7 +122,7 @@
 
         <section>
           <h2>Referentially Transparent</h2>
-          <pre><code class="hljs" data-trim contenteditable>
+          <pre><code class="hljs" class="scala" data-trim>
 scala> val x = "Hello, World"
 x: java.lang.String = Hello, World
 scala> val r1 = x.reverse
@@ -130,7 +134,7 @@ r2: String = dlroW ,olleH
             Suppose we replace all occurrences of the term x with the expression referenced by x
             (its definition)
           </p>
-          <pre class="fragment"><code class="hljs" data-trim contenteditable>
+          <pre class="fragment"><code class="hljs" class="scala" data-trim>
 scala> val r1 = "Hello, World".reverse
 r1: String = dlroW ,olleH
 scala> val r2 = "Hello, World".reverse
@@ -143,7 +147,7 @@ r2: String = dlroW ,olleH
 
         <section>
           <h2>Not Referentially Transparent</h2>
-          <pre><code class="hljs" data-trim contenteditable>
+          <pre><code class="hljs" class="scala" data-trim>
 scala> val x = new StringBuilder("Hello")
 x: java.lang.StringBuilder = Hello
 scala> val y = x.append(", World")
@@ -156,7 +160,7 @@ r2: java.lang.String = Hello, World
           <p class="fragment">
             But now, if we replace all occurrences of the term y by its definition
           </p>
-          <pre class="fragment"><code class="hljs" data-trim contenteditable>
+          <pre class="fragment"><code class="hljs" class="scala" data-trim>
 scala> val x = new StringBuilder("Hello")
 x: java.lang.StringBuilder = Hello
 scala> val r1 = x.append(", World").toString
@@ -202,37 +206,26 @@ r2: java.lang.String = Hello, World, World
         </section>
 
 <section>
-        <section>
-          <h2>Clojure / ClojureScript</h2>
-          <ul>
-            <li>Lisp !!!</li>
-            <li>JVM & JS Engines</li>
-            <li>Immutable data structures</li>
-            <li>Concurrency semantics for references</li>
-            <li>Interoperable with java</li>
-            <li>core.async (channels and goroutines)</li>
-            <li>Datomic: the database as a value</li>
-          </ul>
-        </section>
 
         <section>
           <h2>Clojure</h2>
-          <pre class="stretch"><code class="hljs" data-trim contenteditable>
+          <pre class="stretch"><code class="hljs" class="clojure" data-trim contenteditable>
 (def start 458)
-
 (def end 14)
 
-(defn init-state [n] {n [[]]})
+(defn init-state [n] {n #{[]}})
+
+(defn add-step [step paths]
+  (set (map #(conj % step) paths)))
 
 (defn step [[n ps]]
-  [{(* 2 n)     (map #(conj % :double) ps)}
-   {(quot n 10) (map #(conj % :drop) ps)}])
+  [{(* 2 n)     (add-step :double ps)}
+   {(quot n 10) (add-step :drop   ps)}])
 
 (defn next-state [state]
-  (apply merge-with concat (mapcat step state)))
+  (apply merge-with union (mapcat step state)))
 
-(defn final-state? [state]
-  (get state end))
+(defn final-state? [state] (get state end))
 
 (def final-state
   (->> start
@@ -242,38 +235,36 @@ r2: java.lang.String = Hello, World, World
        first))
           </code></pre>
         </section>
-</section>
 
-<section>
         <section>
-          <h2>Scala</h2>
+          <h2>Clojure / ClojureScript</h2>
           <ul>
-            <li>Object Functional (a better Java)</li>
-            <li>Powerful type system</li>
-            <li>Advanced libraries: Scalaz & Cats</li>
-            <li>Reactive Manifesto (2.0)
-              <ul>
-                <li>Responsive</li>
-                <li>Resilient</li>
-                <li>Elastic</li>
-                <li>Message-driven</li>
-              </ul>
-            </li>
-
+            <li>Lisp !!!</li>
+            <li>JVM & JS Engines</li>
+            <li>Interoperable with Java/JavaScript</li>
+            <li>Immutable data structures</li>
+            <li>Concurrency semantics for references</li>
+            <li>core.async: channels and goroutines</li>
+            <li>core.logic: relational programming</li>
+            <li>Datomic: the database as a value</li>
           </ul>
         </section>
 
+</section>
+
+<section>
+
         <section>
           <h2>Scala</h2>
-          <pre class="stretch"><code class="hljs" data-trim contenteditable>
+          <pre class="stretch"><code class="hljs" class="scala" data-trim contenteditable>
 trait Monoid[A] {
   def op(a1: A, a2: A): A
   def zero: A
 }
 
-def listMonoid[A] = new Monoid[List[A]] {
-  def op(a1: List[A], a2: List[A]) = a1 ++ a2
-  val zero = Nil
+val intAddition: Monoid[Int] = new Monoid[Int] {
+  override def op(a1: Int, a2: Int) = a1 + a2
+  override def zero = 0
 }
 
 def monoidLaws[A](m: Monoid[A], gen: Gen[A]): Prop =
@@ -286,24 +277,34 @@ def foldMap[A, B](as: List[A], m: Monoid[B])(f: A => B): B =
   as.foldLeft(m.zero)((b, a) => m.op(b, f(a)))
           </code></pre>
         </section>
-</section>
 
-<section>
         <section>
-          <h2>Haskell</h2>
+          <h2>Scala</h2>
           <ul>
-            <li>Pure functional language</li>
-            <li>Curried Functions</li>
-            <li>Completely lazy (call by need)</li>
-            <li>Pattern matching</li>
-            <li>Functors, applicatives, monads, ...</li>
-            <li>The IO Monad</li>
+            <li>Object Functional (a better Java)</li>
+            <li>Powerful type system</li>
+            <li>Advanced libraries: Scalaz & Cats</li>
+            <li>Advanced frameworks: Akka & Play</li>
+            <li>Haskell-ish but practical</li>
+            <li>Reactive Manifesto (2.0)
+              <ul>
+                <li>Responsive</li>
+                <li>Resilient</li>
+                <li>Elastic</li>
+                <li>Message-driven</li>
+              </ul>
+            </li>
+
           </ul>
         </section>
 
+</section>
+
+<section>
+
         <section>
           <h2>Haskell</h2>
-          <pre class="stretch"><code class="hljs" data-trim contenteditable>
+          <pre class="stretch"><code class="hljs" class="haskell" data-trim contenteditable>
 class Monad m where
   return :: a -> m a
   (>>=)  :: m a -> (a -> m b) -> m b
@@ -328,20 +329,26 @@ sequence (mx:mxs) =  do x  <- mx
                         return (x:xs)
           </code></pre>
         </section>
-</section>
 
-<section>
         <section>
-          <h2>Idris</h2>
+          <h2>Haskell</h2>
           <ul>
-            <li>Similar to Haskell but strictly evaluated</li>
-            <li>Dependent types</li>
+            <li>Pure functional language</li>
+            <li>Curried Functions</li>
+            <li>Completely lazy (call by need)</li>
+            <li>Pattern matching</li>
+            <li><a href="https://wiki.haskell.org/Typeclassopedia">Typeclassopedia</a>: Functors, Applicatives, Monads, ...</li>
+            <li>The IO Monad !!!</li>
           </ul>
         </section>
 
+</section>
+
+<section>
+
         <section>
           <h2>Idris</h2>
-          <pre class="stretch"><code class="hljs" data-trim contenteditable>
+          <pre class="stretch"><code class="hljs" class="idris" data-trim contenteditable>
 import Data.Vect
 
 insert : Ord elem =>
@@ -357,60 +364,87 @@ ins_sort (x :: xs) = let xs_sorted = ins_sort xs in
                          insert x xs_sorted
           </code></pre>
         </section>
+
+        <section>
+          <h2>Idris</h2>
+          <ul>
+            <li>Similar to Haskell but strictly evaluated</li>
+            <li>Dependent types</li>
+            <li>... don't know much more yet ...</li>
+          </ul>
+        </section>
+
 </section>
 
         <section>
           <h2>Suggestions for further study</h2>
           <ul>
-            <li>A functional programming language</li>
             <li>Functional programming principles</li>
+            <li>(A/Some) functional programming language(s)</li>
+            <li>Functional Data Structures</li>
             <li>Some Category Theory concepts</li>
             <li>A little bit about type theory</li>
-						<li>????</li>
+            <li>Read lots & lots of code on github</li>
+            <li>Generative testing</li>
           </ul>
         </section>
 
+<section>
+        <h2>Suggested books</h2>
         <section>
-          <img src="images/sicp.jpg" alt="Structure and Interpretation of Computer Programs" />
+          <img width="240" height="350" src="images/sicp.jpg" alt="Structure and Interpretation of Computer Programs" />
           <p>
             <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">Structure and Interpretation of Computer Programs</a>
           </p>
         </section>
 
         <section>
-          <img  width="400" height="580" src="images/fpinscala.jpg" alt="Functional Programming in Scala" />
+          <img  width="240" height="350" src="images/fpinscala.jpg" alt="Functional Programming in Scala" />
           <p>
             <a href="https://www.manning.com/books/functional-programming-in-scala">Functional Programming in Scala</a>
           </p>
         </section>
 
         <section>
-          <img  width="400" height="580" src="images/lyah.png" alt="Learn You a Haskell for Great Good!" />
+          <img  width="240" height="350" src="images/lyah.png" alt="Learn You a Haskell for Great Good!" />
           <p>
             <a href="http://learnyouahaskell.com/chapters">Learn You a Haskell for Great Good!</a>
           </p>
         </section>
 
         <section>
-          <img  width="400" height="580" src="images/cftbat.jpg" alt="Clojure for the Brave and True" />
+          <img  width="240" height="350" src="images/cftbat.jpg" alt="Clojure for the Brave and True" />
           <p>
             <a href="http://www.braveclojure.com">Clojure for the Brave and True</a>
           </p>
         </section>
 
         <section>
-          <img  width="400" height="580" src="images/idris.jpg" alt="Type-Driven Development with Idris" />
+          <img  width="240" height="350" src="images/idris.jpg" alt="Type-Driven Development with Idris" />
           <p>
             <a href="https://www.manning.com/books/type-driven-development-with-idris">Type-Driven Development with Idris</a>
           </p>
         </section>
 
         <section>
-          <img  width="400" height="580" src="images/frdm.jpg" alt="Functional and Reactive Domain Modeling" />
+          <img width="240" height="350" src="images/pfds.jpg" alt="Purely functional data structures" />
+          <p>
+            <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">Purely Functional Data Structures (PhD Thesis)</a>
+          </p>
+        </section>
+        <section>
+          <img  width="240" height="350" src="images/frdm.jpg" alt="Functional and Reactive Domain Modeling" />
           <p>
             <a href="https://www.manning.com/books/functional-and-reactive-domain-modeling">Functional and Reactive Domain Modeling</a>
           </p>
         </section>
+
+</section>
+
+<section>
+  <h1>THANKS !!</h1>
+  <h2>(and the best part is yet to come)</h2>
+</section>
 
       </div>
 
